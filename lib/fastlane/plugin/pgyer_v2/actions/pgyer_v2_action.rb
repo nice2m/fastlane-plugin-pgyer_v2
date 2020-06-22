@@ -8,6 +8,7 @@ module Fastlane
         UI.message("The pgyer plugin is working.")
 
         api_host = "http://qiniu-storage.pgyer.com/apiv1/app/upload"
+        pgyer_upload_note_file_name = "./pgyer_upload_note_file.txt"
         api_key = params[:api_key]
         user_key = params[:user_key]
 
@@ -70,8 +71,14 @@ module Fastlane
           UI.user_error!("PGYER Plugin Error: #{info['message']}")
         end
 
-        UI.success "Upload success. Visit this URL to see: https://www.pgyer.com/#{info['data']['appShortcutUrl']}"
-        UI.success "important info:#{info}"
+        appKeyStr = info['data']['appKey']
+        toastMsgKeyStr = "https://www.pgyer.com/#{appKeyStr}"
+
+        UI.success "Upload success. Visit this URL to see: #{toastMsgKeyStr}"
+        File.write(pgyer_upload_note_file_name, "#{toastMsgKeyStr}")
+        __pwd = `pwd`
+        puts __pwd
+        
       end
 
       def self.description
