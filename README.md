@@ -4,6 +4,7 @@
 
 
 ##感谢[shishirui](https://github.com/shishirui)，实现[pgyer 0.1.0](https://github.com/shishirui/fastlane-plugin-pgyer)
+
 ## 开始
 
 ###第一步：
@@ -16,23 +17,24 @@ gem 'fastlane-plugin-pgyer_v2',git: 'https://github.com/nice2m/fastlane-plugin-p
 ```
 
 
-###第二步：
+### 第二步：
 ```bash
 cd [项目根目录下]
 
 bundle update
 ```
 
+
 ## 关于 pgyer_v2
 
 
-###原有实现
+### 原有实现 &问题
+
 [原有实现](https://github.com/shishirui/fastlane-plugin-pgyer)
 
-####使用问题
-原有插件未能获取类似于releaseId 的字段，一旦测试需要特殊的历史版本，需要每次到蒲公英控制台去获取下载地址；不是很方便
+原有插件未能获取类似于releaseId 的字段，一旦测试需要特殊的历史版本，需要每次到蒲公英控制台去获取下载地址；不是很方便;
 
-####新版本
+#### 新版本
 pgyer_v2，ipa 文件成功后的，解析类似于releaseId 字段，appIcon 哈希字段到 
 ```
 fastlane\pgyer_upload_note_file.txt
@@ -47,26 +49,30 @@ iap上传完成服务器返回json
 ```
 
 
-## Fastfile配置
+## Fastfile配置参考
 ```ruby
-     pgyer(
-          api_key: <pgy_api_key>, 
-          user_key: <pgy_user_key>,
-          update_description: [pgy_release_note]
-      )
-      
-      # pgyer_v2 插件生成的txt文件，获取到图标，下载地址
-      pgyer_upload_note_file_name = "./pgyer_upload_note_file.txt"
-      pgyer_note_content = IO.read(pgyer_upload_note_file_name)
-      notes_info_list = pgyer_note_content.split(" ")
+lane :beta do
+    gym
+    pgyer(
+        api_key: <pgy_api_key>, 
+        user_key: <pgy_user_key>,
+        update_description: [pgy_release_note]
+    )
 
-      # 带releaseId 的app下载链接
-      app_down_load_url = notes_info_list[0]
-      # 带hash 的appIcon 图片链接
-      app_icon_url = notes_info_list[1]
+    # pgyer_v2 插件生成的txt文件，获取到图标，下载地址
+    pgyer_upload_note_file_name = "./pgyer_upload_note_file.txt"
+    pgyer_note_content = IO.read(pgyer_upload_note_file_name)
+    notes_info_list = pgyer_note_content.split(" ")
 
-      puts app_down_load_url
-      puts app_icon_url
+    # 带releaseId 的app下载链接
+    app_down_load_url = notes_info_list[0]
+    # 带hash 的appIcon 图片链接
+    app_icon_url = notes_info_list[1]
+
+    puts app_down_load_url
+    puts app_icon_url
+end
+	
 ```
 
 
