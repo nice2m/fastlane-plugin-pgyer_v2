@@ -5,9 +5,9 @@
 
 ## 感谢[shishirui](https://github.com/shishirui)，实现[pgyer 0.1.0](https://github.com/shishirui/fastlane-plugin-pgyer)
 
-## 开始
+## 开始集成
 
-### 第一步：
+#### 第一步：
 
 覆盖以下内容到`fastlane\Pluginfile`文件内；
 
@@ -17,7 +17,7 @@ gem 'fastlane-plugin-pgyer_v2',git: 'https://github.com/nice2m/fastlane-plugin-p
 ```
 
 
-### 第二步：
+#### 第二步：
 ```bash
 cd [项目根目录下]
 
