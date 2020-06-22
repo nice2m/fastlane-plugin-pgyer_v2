@@ -8,7 +8,7 @@ module Fastlane
         UI.message("The pgyer plugin is working.")
 
         api_host = "http://qiniu-storage.pgyer.com/apiv1/app/upload"
-        pgyer_upload_note_file_name = "./pgyer_upload_note_file.txt"
+        pgyer_upload_note_file_name = "./fastlane/pgyer_upload_note_file.txt"
         api_key = params[:api_key]
         user_key = params[:user_key]
 
@@ -71,14 +71,19 @@ module Fastlane
           UI.user_error!("PGYER Plugin Error: #{info['message']}")
         end
 
+        #下载地址唯一hash
+        # https://www.pgyer.com/<hash>
         appKeyStr = info['data']['appKey']
         toastMsgKeyStr = "https://www.pgyer.com/#{appKeyStr}"
 
+        # app 图标 唯一hash
+        # https://appicon.pgyer.com/image/view/app_icons/<hash>
+        appIconStr = "https://appicon.pgyer.com/image/view/app_icons/#{info['data']['appIcon']}"
+      
+        File.create(pgyer_upload_note_file_name,"#{toastMsgKeyStr}")
+        File.append(pgyer_upload_note_file_name, " #{appIconStr}")
+
         UI.success "Upload success. Visit this URL to see: #{toastMsgKeyStr}"
-        File.write(pgyer_upload_note_file_name, "#{toastMsgKeyStr}")
-        __pwd = `pwd`
-        puts __pwd
-        
       end
 
       def self.description
