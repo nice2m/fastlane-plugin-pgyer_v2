@@ -3,7 +3,7 @@
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-pgyer_v2)
 
 
-##感谢[shishirui](https://github.com/shishirui)，实现[pgyer 0.1.0](https://github.com/shishirui/fastlane-plugin-pgyer)
+## 感谢[shishirui](https://github.com/shishirui)，实现[pgyer 0.1.0](https://github.com/shishirui/fastlane-plugin-pgyer)
 
 ## 开始
 
@@ -36,14 +36,12 @@ bundle update
 
 #### 新版本
 pgyer_v2，ipa 文件成功后的，解析类似于releaseId 字段，appIcon 哈希字段到 
-```
-fastlane\pgyer_upload_note_file.txt
-``` 中,以空格分隔；
+`fastlane\pgyer_upload_note_file.txt`中,以空格分隔；
 
 
 iap上传完成服务器返回json
 
-```json
+```
 {"code"=>0, "message"=>"", "data"=>{"appKey"=>"177d2bd5e3803dec08f36019d111034c", "userKey"=>"192ef1e7f5aafe7c5dfcfef44e3bcc", "appType"=>"1", "appIsLastest"=>"1", "appFileSize"=>"11331563", "appName"=>"美团", "appVersion"=>"1.1.12", "appVersionNo"=>"7", "appBuildVersion"=>"23", "appIdentifier"=>"com.tck.kidian", "appIcon"=>"f84c225a92edea360e837eb0decd8fe2", "appDescription"=>"美团是一款基于餐饮服务商和业务员的服务平台，以即时沟通为切入点，以专业服务作为产品特色和卖点，为餐饮服务商和业务员提供全面的服务和管理，包括：业务拓展、订单跟踪、客户拜访、个人信息等；", "appUpdateDescription"=>"测试服", "appScreenshots"=>"c9de904652e53a17ca47441344a37f6,ac61a777e6907466f054aa015c4d24e5,a2315a507bbe2e4598803327353bd6", "appShortcutUrl"=>"JfsN", "appCreated"=>"2020-06-22 18:45:34", "appUpdated"=>"2020-06-22 18:45:34", "appQRCodeURL"=>"http://www.pgyer.com/app/qrcodeHistory/9745d846808cf47eec73459135c65a0201158f01bc7f458f8f7304e208594"}}
 
 ```
