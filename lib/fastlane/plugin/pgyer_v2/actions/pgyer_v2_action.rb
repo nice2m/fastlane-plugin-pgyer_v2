@@ -80,8 +80,8 @@ module Fastlane
         # https://appicon.pgyer.com/image/view/app_icons/<hash>
         appIconStr = "https://appicon.pgyer.com/image/view/app_icons/#{info['data']['appIcon']}"
       
-        File.create(pgyer_upload_note_file_name,"#{toastMsgKeyStr}")
-        File.append(pgyer_upload_note_file_name, " #{appIconStr}")
+        File.open(pgyer_upload_note_file_name, 'w') {|f| f.write("#{toastMsgKeyStr}") }
+        File.open(pgyer_upload_note_file_name, 'a') {|f| f.write(" #{appIconStr}") }
 
         UI.success "Upload success. Visit this URL to see: #{toastMsgKeyStr}"
       end
