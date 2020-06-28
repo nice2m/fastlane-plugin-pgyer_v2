@@ -70,23 +70,28 @@ module Fastlane
         if info['code'] != 0
           UI.user_error!("PGYER Plugin Error: #{info['message']}")
         end
+
         # test_begin
-        puts "#{info}"
+        # puts "#{info}"
         # test_end
 
-        #下载地址唯一hash
+        # 下载地址唯一hash
         # https://www.pgyer.com/<hash>
         appKeyStr = info['data']['appKey']
-        toastMsgKeyStr = "https://www.pgyer.com/#{appKeyStr}"
+        appReleaseDownLoadURL = "https://www.pgyer.com/#{appKeyStr}"
 
+        # 下载地址二维码
+        # eg: http://www.pgyer.com/app/qrcodeHistory/08d70464a896f7ba38ef28daf54b018756a466efb6a6d268d07a404c55490614
+        appQRCodeURL = info['data']['appQRCodeURL']
+        
         # app 图标 唯一hash
         # https://appicon.pgyer.com/image/view/app_icons/<hash>
-        appIconStr = "https://appicon.pgyer.com/image/view/app_icons/#{info['data']['appIcon']}"
-      
-        File.open(pgyer_upload_note_file_name, 'w') {|f| f.write("#{toastMsgKeyStr}") }
-        File.open(pgyer_upload_note_file_name, 'a') {|f| f.write("' '#{appIconStr}") }
+        appIconURLStr = "https://appicon.pgyer.com/image/view/app_icons/#{info['data']['appIcon']}"
 
-        UI.success "Upload success. Visit this URL to see: #{toastMsgKeyStr}"
+        writingContents = "#{appReleaseDownLoadURL}" + " #{appQRCodeURL}" + " #{appIconURLStr}"
+        File.open(pgyer_upload_note_file_name, 'w') {|f| f.write("#{writingContents}") }
+
+        UI.success "Upload success. Visit this URL to see: #{appReleaseDownLoadURL}"
       end
 
       def self.description
