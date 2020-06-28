@@ -71,7 +71,7 @@ module Fastlane
           UI.user_error!("PGYER Plugin Error: #{info['message']}")
         end
         # test_begin
-        put "#{info}"
+        puts "#{info}"
         # test_end
 
         #下载地址唯一hash
