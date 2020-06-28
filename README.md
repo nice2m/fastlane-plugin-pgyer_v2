@@ -64,10 +64,13 @@ lane :beta do
 
     # 带releaseId 的app下载链接
     app_down_load_url = notes_info_list[0]
+    # app下载地址二维码链接
+    app_qr_code_img_url = notes_info_list[1]
     # 带hash 的appIcon 图片链接
-    app_icon_url = notes_info_list[1]
+    app_icon_url = notes_info_list[2] 
 
     puts app_down_load_url
+    puts app_qr_code_img_url
     puts app_icon_url
 end
 	
