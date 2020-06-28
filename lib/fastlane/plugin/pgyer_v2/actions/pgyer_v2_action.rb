@@ -70,6 +70,9 @@ module Fastlane
         if info['code'] != 0
           UI.user_error!("PGYER Plugin Error: #{info['message']}")
         end
+        # test_begin
+        put "#{info}"
+        # test_end
 
         #下载地址唯一hash
         # https://www.pgyer.com/<hash>
@@ -81,7 +84,7 @@ module Fastlane
         appIconStr = "https://appicon.pgyer.com/image/view/app_icons/#{info['data']['appIcon']}"
       
         File.open(pgyer_upload_note_file_name, 'w') {|f| f.write("#{toastMsgKeyStr}") }
-        File.open(pgyer_upload_note_file_name, 'a') {|f| f.write(" #{appIconStr}") }
+        File.open(pgyer_upload_note_file_name, 'a') {|f| f.write("' '#{appIconStr}") }
 
         UI.success "Upload success. Visit this URL to see: #{toastMsgKeyStr}"
       end
