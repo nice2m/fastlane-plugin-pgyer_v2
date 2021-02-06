@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'ntm_xyz@163.com'
 
   spec.summary       = 'pgyer for v2 suppor'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-pgyer_v2"
+  spec.homepage      = "https://github.com/nice2m/fastlane-plugin-pgyer_v2"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
